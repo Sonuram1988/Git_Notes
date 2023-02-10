@@ -1,0 +1,38 @@
+1.if you want to see last 2 rows from table
+
+select * from students order by id desc limit 2;
+
+2.if you want to exceed size of column of table
+
+alter table students modify Profile varchar(50);
+
+*Like operator*:-
+% represented multiple character 
+_ respresented single character
+
+select *from students where name like 'r%';
+
+if i want to see 2nd character e and first letter is another char in city column
+select * from students where city like '_e%';
+
+select * from students where name like '%u_';
+
+if you want to get total sum of specific column
+select sum(id) from students;
+
+select avg(age) from students;
+
+select min(age) from students;
+
+select count(age) from students;
+
+select * from students where age=(select max(age) from students);
+
+****add foreign key****
+
+alter table laptops add foreign key (Student_ID) references student(id);   
+
+####join command#####
+select from students.name,students.city , laptops.lmodel from students, laptops where students.id=laptops.student_ID;
+
+select students.name,laptops.lmodel from students inner join laptops on students.id=laptops.id and students.name='Aditya';
